@@ -1,0 +1,30 @@
+{
+    "device": {
+        "path": "@MY_MDT@", 
+        "groups": [
+            "find_group"
+        ]
+    }, 
+    "flist_type": "fid", 
+    "groups": [
+        {
+            "rules": [
+                {
+                    "action": "LAT_COUNTER_INC", 
+                    "counter_name": "matched", 
+		    "expression": "(type == S_IFREG) && (size == 3901) && fname_match(\"*01*\") && (mtime > @TS@ )",
+                    "argument": "matched"
+                },
+                {
+                    "action": "LAT_COUNTER_INC",
+                    "counter_name": "scanned", 
+                    "expression": "== type S_IFREG",
+                    "argument": "scanned"
+                },
+
+            ], 
+            "name": "find_group"
+        }
+    ], 
+    "summarize_size": false
+}
